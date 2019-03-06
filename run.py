@@ -1,6 +1,7 @@
 import glob, os
 import time
 import csv
+import kml
 
 
 # Start timer
@@ -30,6 +31,13 @@ os.chdir(input_path)
 for gpx_file in glob.glob("*.gpx"):
     print('Converting '+gpx_file)
     csv.convert(gpx_file)
+
+# Change directory to output files folder
+os.chdir(output_path)
+
+for csv_file in glob.glob("*.csv"):
+    print('Converting '+csv_file)
+    kml.generate(csv_file)
 
 elapsed = time.time() - start_time
 print("Completed in {0:.2f} seconds".format(elapsed))
