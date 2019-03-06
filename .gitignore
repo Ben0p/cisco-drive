@@ -102,3 +102,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# .gpx and .csv
+.gpx
+.csv
