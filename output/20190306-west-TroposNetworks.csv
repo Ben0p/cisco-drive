@@ -1,2 +1,0 @@
-time,ssid,mac,latitude,longitude,elevation,rssi,quality,channel,sats,hdop,vdop,pdop,privacy,type,rates
-2019-03-02 02:19:46.0 ,TroposNetworks,00:0D:97:09:FF:29,-22.302837,119.336202,435.7,-81,28,149,9,0.9,1.4,1.6,WPA-CCMP,Infrastructure,6/9/12/18/24/36/48/54

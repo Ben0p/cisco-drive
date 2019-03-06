@@ -1,2 +1,0 @@
-time,ssid,mac,latitude,longitude,elevation,rssi,quality,channel,sats,hdop,vdop,pdop,privacy,type,rates
-2019-03-02 04:21:21.0 ,iPhone,62:30:D4:B4:02:41,-22.292577,119.315133,432.3,-83,23,1,10,0.8,1.4,1.6,RSNA-CCMP,Infrastructure,1/2/5.5/6/7/9/11/12/14/18/22/24/29/36/43/48/54/58/65/72

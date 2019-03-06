@@ -1,3 +1,0 @@
-time,ssid,mac,latitude,longitude,elevation,rssi,quality,channel,sats,hdop,vdop,pdop,privacy,type,rates
-2019-03-02 02:13:2.0 ,TP-Link_9820,AC:84:C6:01:98:20,-22.330055,119.367533,424.7,-83,23,6,9,0.9,1.4,1.7,RSNA-CCMP,Infrastructure,1/2/5.5/6/9/11/12/18/24/36/48/54
-2019-03-02 02:13:16.0 ,TP-Link_9820,AC:84:C6:01:98:20,-22.329003,119.365847,431.9,-83,23,6,9,0.9,1.4,1.7,RSNA-CCMP,Infrastructure,1/2/5.5/6/9/11/12/18/24/36/48/54
