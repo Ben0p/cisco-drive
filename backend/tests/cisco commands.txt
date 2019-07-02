@@ -1,0 +1,5 @@
+# Show connected AP
+show dot11 associations
+
+# All association info
+show dot11 associations all-client

@@ -23,21 +23,21 @@ def generate(csv_in):
 
     # Ledgend of the colors for each throughput result
     ledgend = (
-        '       <Folder><name>Legend - RSSI</name>'
+        '       <Folder><name>Legend - SNR</name>'
         '           <Placemark>'
-        '               <name>&lt;span style=&quot;color:#ace600;&quot;&gt;&lt;b&gt;Greater than -50dBm&lt;/b&gt;&lt;/span&gt;</name>'
+        '               <name>&lt;span style=&quot;color:#53ff00;&quot;&gt;&lt;b&gt;Greater than 20dBm&lt;/b&gt;&lt;/span&gt;</name>'
         '           </Placemark>'
         '           <Placemark>'
-        '               <name>&lt;span style=&quot;color:#00e674;&quot;&gt;&lt;b&gt;-60dBm&lt;/b&gt;&lt;/span&gt;</name>'
+        '               <name>&lt;span style=&quot;color:#f2ff03;&quot;&gt;&lt;b&gt;15dBm&lt;/b&gt;&lt;/span&gt;</name>'
         '           </Placemark>'
         '           <Placemark>'
-        '               <name>&lt;span style=&quot;color:#003ae6;&quot;&gt;&lt;b&gt;-70dBm&lt;/b&gt;&lt;/span&gt;</name>'
+        '               <name>&lt;span style=&quot;color:#ffbc03;&quot;&gt;&lt;b&gt;10dBm&lt;/b&gt;&lt;/span&gt;</name>'
         '           </Placemark>'
         '           <Placemark>'
-        '               <name>&lt;span style=&quot;color:#e600e6;&quot;&gt;&lt;b&gt;-80dBm&lt;/b&gt;&lt;/span&gt;</name>'
+        '               <name>&lt;span style=&quot;color:#ff8103;&quot;&gt;&lt;b&gt;5dBm&lt;/b&gt;&lt;/span&gt;</name>'
         '           </Placemark>'
         '           <Placemark>'
-        '               <name>&lt;span style=&quot;color:#e60000;&quot;&gt;&lt;b&gt;Less than -80dBm&lt;/b&gt;&lt;/span&gt;</name>'
+        '               <name>&lt;span style=&quot;color:#ff3e03;&quot;&gt;&lt;b&gt;Less than 5dBm&lt;/b&gt;&lt;/span&gt;</name>'
         '           </Placemark>'
         '       </Folder>'
     )
@@ -65,20 +65,20 @@ def generate(csv_in):
 
     # Colors for throughputs
     color = {
-        '4':'#e60000',
-        '3':'#e600e6',
-        '2':'#003ae6',
-        '1':'#00e674',
-        '0':'#ace600'
+        '4':'#ff3e03',
+        '3':'#ff8103',
+        '2':'#ffbc03',
+        '1':'#f2ff03',
+        '0':'#53ff00'
         }
 
     # Colors for the segments
     line_color = {
-        '4':'ff0000e6',
-        '3':'ffe600e6',
-        '2':'ffe63a00',
-        '1':'ff748600',
-        '0':'ff00e6ac'
+        '4':'ff033eff',
+        '3':'ff0381ff',
+        '2':'ff03bcff',
+        '1':'ff03fff2',
+        '0':'ff00ff53'
         }
 
 
@@ -87,7 +87,7 @@ def generate(csv_in):
     # Get the filename without extension
     drive_name = os.path.splitext(csv_filename)[0]
     # Add .kml extension to the drive_name
-    kml_name = drive_name+'.kml'
+    kml_name = drive_name+'-snr.kml'
 
     # Start point counter
     count = 0
@@ -115,42 +115,54 @@ def generate(csv_in):
 
                 # Generate start of first segment from first point
                 if count == 1:
-                    lat2 = cell[3]
-                    lon2 = cell[4]
+                    if cell[6] and cell[7]:
+                        lat2 = cell[6]
+                        lon2 = cell[7]
+                    else:
+                        continue
                 # From second point onwards, start of segment is the end of last segment
                 else:
                     lat2 = lat1
                     lon2 = lon1
                 # Second point of segment
-                lat1 = cell[3]
-                lon1 = cell[4]
+                if cell[6] and cell[7]:
+                    lat1 = cell[6]
+                    lon1 = cell[7]
+                else:
+                    continue
                 
                 # Convert rssi to float
-                rssi = float(cell[6])
+                if cell[22]:
+                    snr = float(cell[22])
+                else:
+                    snr = 0
                 
-                # Set segment colors based on upload connection rate
-                if rssi >= -50:
+                # Set segment colors based on rssi
+                if snr >= 20:
                     rc = color['0']
                     lc = line_color['0']
-                elif -60 <= rssi < -50:
+                elif 15 <= snr < 20:
                     rc = color['1']
                     lc = line_color['1']
-                elif -70 <= rssi < -60:
+                elif 10 <= snr < 15:
                     rc = color['2']
                     lc = line_color['2']
-                elif -80 <= rssi < -70:
+                elif 5 <= snr < 10:
                     rc = color['3']
                     lc = line_color['3']
-                elif rssi < -80:
+                elif 0 < snr < 5:
                     rc = color['4']
                     lc = line_color['4']
+                elif snr == 0:
+                    rc = '#ffffff'
+                    lc = '#ffffffff'
                 
 
                 # Insert values into the kml segment
                 track = placemark.format(
                     c=rc,
                     r=count,
-                    rssi=rssi,
+                    rssi=snr,
                     lon1=lon1,
                     lat1=lat1,
                     lon2=lon2,
