@@ -37,18 +37,21 @@ def wgb(q, ip, un, pw):
                 'ip' : '',
                 'rssi' : '',
                 'snr' : ''
-        }
+                }
             try:
                 connection.send('show dot11 associations all-client\n')
-                time.sleep(1)
+                time.sleep(0.5)
                 connection.send(' ')
-                time.sleep(1)
+                time.sleep(0.5)
                 connection.send('\n')
-                time.sleep(1)
+                time.sleep(0.5)
                 file_output = connection.recv(9999).decode(encoding='utf-8')
                 wgb_stats['response'] = True
+                file_output = file_output.replace('\x08', '')
+                file_output = file_output.replace('--More--', '')
                 lines = file_output.splitlines()
                 for line in lines:
+                    line = line.lstrip(' ')
                     if line.startswith('Address'):
                         ap_mac_a = line.split(':')[1].strip()
                         ap_mac = ap_mac_a.split()[0].strip()
@@ -69,7 +72,9 @@ def wgb(q, ip, un, pw):
                         wgb_stats['snr'] = snr
                 if len(wgb_stats) < 1:
                     wgb_stats['response'] = False
+
                 unresponsive = 0
+
 
             except:
                 wgb_stats['resonse'] = False
@@ -83,16 +88,16 @@ def wgb(q, ip, un, pw):
 
 
             q.put({'wgb' : wgb_stats})
-            time.sleep(1)
+        
 
             
 
 if __name__ == '__main__':
     import multiprocessing
 
-    ip = '10.221.69.51'
+    ip = '10.221.65.81'
     un = 'bgorham'
-    pw = 'xxx'
+    pw = 'Milorat23!'
 
     q = multiprocessing.Queue()
     p = multiprocessing.Process(target=wgb, args=(q, ip, un, pw))

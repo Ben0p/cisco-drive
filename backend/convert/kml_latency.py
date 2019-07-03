@@ -87,7 +87,7 @@ def generate(csv_in):
     # Get the filename without extension
     drive_name = os.path.splitext(csv_filename)[0]
     # Add .kml extension to the drive_name
-    kml_name = drive_name+'-latency.kml'
+    kml_name = 'output/{}-latency.kml'.format(drive_name)
 
     # Start point counter
     count = 0

@@ -106,13 +106,13 @@ class display():
 
 
         # Ascii window
-        self.box10.addstr(1,10,"   T")
-        self.box10.addstr(2,10,' .-"-.')
-        self.box10.addstr(3,10,'|  ___|')
-        self.box10.addstr(4,10,'| (.\/.)')
-        self.box10.addstr(5,10,"|  ,,,' ")
-        self.box10.addstr(6,10,"| '###")
-        self.box10.addstr(7,10," '----'")
+        self.box10.addstr(2,10,"   T")
+        self.box10.addstr(3,10,' .-"-.')
+        self.box10.addstr(4,10,'|  ___|')
+        self.box10.addstr(5,10,'| (.\/.)')
+        self.box10.addstr(6,10,"|  ,,,' ")
+        self.box10.addstr(7,10,"| '###")
+        self.box10.addstr(8,10," '----'")
 
         
         # Refresh whole screen and each window

@@ -1,11 +1,7 @@
 import glob, os
 import time
 import csv
-import kml_snr
-import kml_rssi
-import kml_corrections
-import kml_amps
-import kml_latency
+from convert import kml_snr, kml_rssi, kml_corrections, kml_amps, kml_latency
 
 
 # Start timer
@@ -14,9 +10,6 @@ start_time = time.time()
 # Get working directory
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
-# input files
-#input_path = '{}/input/'.format(dir_path)
-
 # output files
 output_path = '{}/output/'.format(dir_path)
 
@@ -24,26 +17,8 @@ output_path = '{}/output/'.format(dir_path)
 if not os.path.exists(output_path):
     os.makedirs(output_path)
 
-'''
-if not os.path.exists(input_path):
-    os.makedirs(input_path)
-    input("Put .gpx files in the 'input' directory and press [Enter]: ")
-'''
 
-# Change directory to input files folder
-#os.chdir(input_path)
-
-# Get all files ending in .txt
-'''
-for gpx_file in glob.glob("*.gpx"):
-    print('Converting '+gpx_file)
-    csv.convert(gpx_file)
-'''
-
-# Change directory to output files folder
-#os.chdir(output_path)
-
-for csv_file in glob.glob("*.csv"):
+for csv_file in glob.glob("output/*.csv"):
     print('Converting '+csv_file)
     print("Processing SNR...")
     kml_snr.generate(csv_file)

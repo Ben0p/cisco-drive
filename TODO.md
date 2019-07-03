@@ -11,9 +11,10 @@
 - [ ] Log file size displayed to know if it is working
 - [ ] Save settings to a file
     - [ ] Hash the password
-- [ ] Hide password when entering it
+- [x] Hide password when entering it
 - [ ] Program version displayed
 - [ ] More data as below
+- [x] Log .csv and .kml into ./output folder
 
 
 ## Required data

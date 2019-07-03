@@ -4,6 +4,8 @@ import threading
 import time
 from things import asciiart, uptime, curse
 from datetime import datetime
+import os
+import getpass
 
 
 
@@ -60,8 +62,8 @@ if __name__ == '__main__':
     multiprocessing.freeze_support()
     
     gateway = '10.221.64.1'
-    un = input("Username: ")
-    pw = input("Pasword: ")
+    un = input("FMGOPS Username: ")
+    pw = getpass.getpass()
     him_ip = input("IP of HIM: ")
     wgb_ip = input("IP of WGB: ")
     tab_ip = input("IP of Tablet: ")
@@ -104,7 +106,12 @@ if __name__ == '__main__':
     one_sec = 0
     start = time.time()
 
-    with open('{}.csv'.format(filetime), 'w', 10) as f:
+
+    # Create directories
+    if not os.path.exists('output'):
+        os.makedirs('output')
+
+    with open('output/{}.csv'.format(filetime), 'w', 10) as f:
 
         _display = curse.display()
 
