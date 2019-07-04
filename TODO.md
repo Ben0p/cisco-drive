@@ -8,6 +8,7 @@
 - [ ] On-screen keyboard squashes the terminal scrambling the curses display
 
 ## Next release
+- [x] Headers in .csv 
 - [ ] Log file size displayed to know if it is working
 - [ ] Save settings to a file
     - [ ] Hash the password

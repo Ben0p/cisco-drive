@@ -112,6 +112,37 @@ if __name__ == '__main__':
         os.makedirs('output')
 
     with open('output/{}.csv'.format(filetime), 'w', 10) as f:
+        f.write('{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}\n'.format(
+            'Timestamp',
+            'Vehicle',
+            'Him IP',
+            'Easting',
+            'Northing',
+            'Elevation',
+            'Latitude',
+            'Longitude',
+            'Him Response',
+            'Amps / sec',
+            'zLibs / sec',
+            'Amps / min',
+            'zLibs / min',
+            'Amps Total',
+            'zLibs Total',
+            'Gateway',
+            'Latency',
+            'Response',
+            'AP MAC',
+            'AP Hostname',
+            'AP IP',
+            'WGB RSSI',
+            'SNR',
+            'WGB Response',
+            'Corrections / sec',
+            'Corrections / min',
+            'Corrections / total'
+        ))
+
+
 
         _display = curse.display()
 
