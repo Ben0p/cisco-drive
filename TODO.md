@@ -1,7 +1,7 @@
 # TODO
 
 ## Bugs
-- [ ] RSSI from WGB blank most the time
+- [x] RSSI from WGB blank most the time
 - [ ] Freezes if no network when starting program
 - [ ] Windows firewall has a shit fit if the .exe name is different
     - [ ] Keep it the same name
