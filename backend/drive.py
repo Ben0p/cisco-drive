@@ -61,7 +61,7 @@ if __name__ == '__main__':
     # Fix PyInstaller bug
     multiprocessing.freeze_support()
     
-    gateway = '10.221.64.1'
+    gateway = '192.168.16.1'
     un = input("FMGOPS Username: ")
     pw = getpass.getpass()
     him_ip = input("IP of HIM: ")
@@ -75,7 +75,7 @@ if __name__ == '__main__':
     tab_ip = '10.221.64.123'
     '''
     bcast_port = '3784'
-    base = '10.221.64.7'
+    base = '192.168.17.5'
 
  
 

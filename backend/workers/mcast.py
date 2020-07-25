@@ -58,12 +58,15 @@ def listen(q, host):
 if __name__ == '__main__':
     import multiprocessing
 
+
     q = multiprocessing.Queue()
-    p = multiprocessing.Process(target=listen, args=(q, ))
+    p = multiprocessing.Process(target=listen, args=(q, host, ))
     p.start()
 
     while True:
         line = q.get()
         print(line)
+
+
 
 # python ./backend/tests/amps.py
